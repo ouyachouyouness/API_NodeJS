@@ -1,11 +1,11 @@
 const express = require("express");
 const app = express();
-const some = require("./dataset/survery_1.json");
+const some = require("./dataset/survery_3.json");
 
 //En general
 app.get("/", function (req, res) {
   if (!some) {
-    res.status(404).send("course not found ! ");
+    res.status(404).send("Data not found ! ");
   } else {
     res.send(" First Exo");
   }
@@ -14,7 +14,7 @@ app.get("/", function (req, res) {
 //Require all data
 app.get("/data_remuneration", (req, res) => {
   if (!some) {
-    res.status(404).send("course not found ! ");
+    res.status(404).send("Data not found ! ");
   } else {
     res.send(some);
   }
@@ -23,7 +23,7 @@ app.get("/data_remuneration", (req, res) => {
 // Filter by one or more fields/attributes
 app.get("/data_remuneration/:id", (req, res) => {
   if (!some) {
-    res.status(404).send("course not found ! ");
+    res.status(404).send("data not found ! ");
   } else {
     const salaire = some.filter(
       (list) =>
@@ -37,7 +37,7 @@ app.get("/data_remuneration/:id", (req, res) => {
 // Route sort
 app.get("/data_remuneration", (req, res) => {
   if (!some) {
-    res.status(404).send("course not found ! ");
+    res.status(404).send("data not found ! ");
   } else {
     let data = JSON.parse(JSON.stringify(some));
 
@@ -63,6 +63,17 @@ app.get("/data_remuneration", (req, res) => {
     }
   }
 });
+
+//Post
+
+// app.post("/data_remuneration", (req, res) => {
+//   const course = {
+//     id: some.length + 1,
+//     employer: req.body.some["Employer"],
+//   };²
+
+//   some.push(employer);
+// });
 
 const port = process.env.PORT || 3000;
 
