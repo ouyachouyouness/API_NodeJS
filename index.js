@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const some = require("./dataset/survery_3.json");
+const some = require("./dataset/survery_2.json");
 
 //En general
 app.get("/", function (req, res) {
